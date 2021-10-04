@@ -11,51 +11,56 @@ import br.com.brunoti.kotlintodolist.datasource.TaskDataSource
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private val adapter by lazy { TaskListAdapter() }
+	private lateinit var binding: ActivityMainBinding
+	private val adapter by lazy { TaskListAdapter() }
 
-    /**
-     * Nova maneira de iniciar uma activity.
-     * Já que `startActivityForResult` foi depreciado.
-     */
-    private val register =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == Activity.RESULT_OK) updateList()
-        }
+	/**
+	 * Nova maneira de iniciar uma activity.
+	 * Já que `startActivityForResult` foi depreciado.
+	 */
+	private val register =
+		registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+			if (it.resultCode == Activity.RESULT_OK)
+				updateList()
+		}
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
 
-        binding.rvTasks.adapter = adapter
-        updateList()
+		binding = ActivityMainBinding.inflate(layoutInflater)
+		setContentView(binding.root)
+		binding.rvTasks.adapter = adapter
 
-        insertListeners()
-    }
+		updateList()
 
-    private fun insertListeners() {
-        binding.fab.setOnClickListener {
-            register.launch(Intent(this, AddTaskActivity::class.java))
-        }
+		insertListeners()
+	}
 
-        adapter.listenerEdit = {
-            val intent = Intent(this, AddTaskActivity::class.java)
-            intent.putExtra(AddTaskActivity.TASK_ID, it.id)
-            register.launch(intent)
-        }
+	private fun insertListeners() {
+		binding.fab.setOnClickListener {
+			register.launch(Intent(this, SaveTaskActivity::class.java))
+		}
 
-        adapter.listenerDelete = {
-            TaskDataSource.deleteTask(it)
-            updateList()
-        }
-    }
+		adapter.listenerEdit = {
+			val intent = Intent(this, SaveTaskActivity::class.java)
 
-    private fun updateList() {
-        val list = TaskDataSource.getList()
-        binding.includeEmpty.emptyState.visibility = if (list.isEmpty()) View.VISIBLE
-        else View.GONE
+			intent.putExtra(SaveTaskActivity.TASK_ID, it.id)
+			register.launch(intent)
+		}
 
-        adapter.submitList(list)
-    }
+		adapter.listenerDelete = {
+			if (TaskDataSource.deleteTask(it))
+				updateList()
+		}
+	}
+
+	private fun updateList() {
+		val list = TaskDataSource.getList()
+
+		binding.includeEmpty.emptyState.visibility =
+			if (list.isEmpty()) View.VISIBLE
+			else View.GONE
+
+		adapter.submitList(list)
+	}
 }
