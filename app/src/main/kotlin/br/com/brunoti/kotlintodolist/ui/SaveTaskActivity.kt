@@ -52,7 +52,7 @@ class SaveTaskActivity : AppCompatActivity() {
 			if (binding.tilDate.text != "") {
 				val date = SimpleDateFormat("dd/MM/yyyy").parse(binding.tilDate.text)
 
-				builderDatePicker.setSelection(date.time)
+				builderDatePicker.setSelection(date?.time)
 			}
 			datePicker = builderDatePicker.build()
 
@@ -70,7 +70,7 @@ class SaveTaskActivity : AppCompatActivity() {
 			var time:List<Int> = listOf(0, 0)
 
 			if (binding.tilHour.text != "") {
-				time = binding.tilHour.text.split(":").map { it -> it.toInt() }
+				time = binding.tilHour.text.split(":").map {  it.toInt() }
 			}
 
 			timePicker = MaterialTimePicker.Builder()
