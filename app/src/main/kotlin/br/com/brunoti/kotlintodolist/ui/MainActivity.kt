@@ -6,13 +6,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.brunoti.kotlintodolist.databinding.ActivityMainBinding
 import br.com.brunoti.kotlintodolist.datasource.TaskDataSource
 
 class MainActivity : AppCompatActivity() {
-
+	var taskList = TaskDataSource.getList()
 	private lateinit var binding: ActivityMainBinding
-	private val adapter by lazy { TaskListAdapter() }
+	private val adapter by lazy { TaskListAdapter(taskList) }
 
 	/**
 	 * Nova maneira de iniciar uma activity.
@@ -29,6 +30,8 @@ class MainActivity : AppCompatActivity() {
 
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		setContentView(binding.root)
+
+		binding.rvTasks.layoutManager = LinearLayoutManager(this)
 		binding.rvTasks.adapter = adapter
 
 		updateList()
@@ -55,12 +58,13 @@ class MainActivity : AppCompatActivity() {
 	}
 
 	private fun updateList() {
-		val list = TaskDataSource.getList()
+		taskList = TaskDataSource.getList()
 
 		binding.includeEmpty.emptyState.visibility =
-			if (list.isEmpty()) View.VISIBLE
+			if (taskList.isEmpty()) View.VISIBLE
 			else View.GONE
 
-		adapter.submitList(list)
+		adapter.submitList(null) // TODO: remove this hack when implements room
+		adapter.submitList(taskList.toList())
 	}
 }

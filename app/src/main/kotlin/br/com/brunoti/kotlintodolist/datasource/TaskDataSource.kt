@@ -2,10 +2,10 @@ package br.com.brunoti.kotlintodolist.datasource
 
 import br.com.brunoti.kotlintodolist.model.Task
 
-object TaskDataSource {
-	private val list = arrayListOf<Task>()
+object TaskDataSource  {
+	private var list = mutableListOf<Task>()
 
-	fun getList() = list.toList()
+	fun getList() = list
 
 	fun insertTask(task: Task) {
 		if (task.id == 0) {
@@ -20,7 +20,6 @@ object TaskDataSource {
 
 	fun deleteTask(task: Task): Boolean {
 		if (list.remove(task)) return true
-
 		return false
 	}
 }

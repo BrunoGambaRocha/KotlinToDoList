@@ -3,15 +3,13 @@ package br.com.brunoti.kotlintodolist.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.brunoti.kotlintodolist.R
 import br.com.brunoti.kotlintodolist.databinding.ItemTaskBinding
 import br.com.brunoti.kotlintodolist.model.Task
 
-class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(DiffCallback()) {
-
+class TaskListAdapter(val taskList: MutableList<Task>) : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(Task.DIFF_CALLBACK) {
 	var listenerEdit: (Task) -> Unit = {}
 	var listenerDelete: (Task) -> Unit = {}
 
@@ -22,8 +20,16 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(DiffCa
 		return TaskViewHolder(binding)
 	}
 
+	override fun submitList(list: List<Task?>?) {
+		super.submitList(list?.let { ArrayList(it) })
+	}
+
 	override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-		holder.bind(getItem(position))
+		holder.bind(taskList[position])
+	}
+
+	override fun getItemCount(): Int {
+		return taskList.size
 	}
 
 	inner class TaskViewHolder(
@@ -54,9 +60,4 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(DiffCa
 			popupMenu.show()
 		}
 	}
-}
-
-class DiffCallback : DiffUtil.ItemCallback<Task>() {
-	override fun areItemsTheSame(oldItem: Task, newItem: Task) = oldItem == newItem
-	override fun areContentsTheSame(oldItem: Task, newItem: Task) = oldItem.id == newItem.id
 }
