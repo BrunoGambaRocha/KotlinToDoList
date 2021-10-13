@@ -30,6 +30,8 @@ class SaveTaskActivity : AppCompatActivity() {
 		binding = ActivitySaveTaskBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 
+		setSupportActionBar(binding.toolbar)
+
 		if (intent.hasExtra(TASK_ID)) {
 			val taskId = intent.getIntExtra(TASK_ID, 0)
 
