@@ -1,59 +1,105 @@
-# LAB - Criando um app de lembretes e tarefas com Kotlin.
-O curso pode ser acessado na plataforma da [Digital Innovation One](https://digitalinnovation.one/).
+# Kotlin To Do List
 
-## Sobre o Autor
-<img align="left" width="190" height="190" margin-right="150px" src="https://drive.google.com/uc?export=view&id=1Kn8aRAQbLZx9BejvZD2eK8kLhp8j9i5m">
-Sou um desenvolvedor Android que ama novos desafios e não perde a oportunidade de aprender coisas novas, sou organizado,
-pontual e estou sempre disponível para o ajudar, procuro estar cercado de pessoas que extraem o melhor de mim,
-me ajudando a sempre desempenhar o meu máximo. Por isso, quero compartilhar com vocês um pouco do que sinto quando programo e retribuir com tudo o que sei.
+<img src="screenshot.png"/>
 
-[![Linkedin Badge](https://img.shields.io/badge/-Ezequiel_Messore-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/ezequielmessore/)](https://www.linkedin.com/in/ezequielmessore/)
-[![Gmail Badge](https://img.shields.io/badge/-ezequielmessore@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:ezequielmessore@gmail.com)](mailto:ezequielmessore@gmail.com)
-
-## <br />Descrição do Lab.
-O objetivo do projeto é criar um App de `To do list` do zero mostrando o processo de desenvolvimento usando Kotlin,
-uma das linguagens de programação de maior ascensão dos últimos anos.
-Além disto, desafiar a evolução do App e entregar uma solução mais robusta pensando sempre na melhor experiência do usuário.
-
-## Aulas e materiais de estudo.
-- Aula - 01: Apresentação pessoal e apresentação do curso.
-  - [Apresentação](https://drive.google.com/file/d/1KhneglCpya7VgAsczDsa7zXmpWkyo0XZ/view?usp=sharing)
-- Aula - 02: Configurando nosso primeiro projeto.
-- Aula - 03: Um pouco do Android Studio.
-  - [Conheça o Android Studio](https://developer.android.com/studio/intro)
-- Aula - 04: Temas
-  - [Documentação dos temas](https://developer.android.com/guide/topics/ui/look-and-feel/themes?hl=pt-br)
-  - Link de referência do [stackoverflow](https://stackoverflow.com/questions/22192291/how-to-change-the-status-bar-color-in-android/24997241#24997241)
-  - Customização do Floating Action Button [stackoverflow](https://stackoverflow.com/questions/30969455/android-changing-floating-action-button-color/56158913#56158913)
-- Aula - 05:  Começando por a mão na massa.
-  - [Protótipo](https://xd.adobe.com/view/77c56d1f-232d-41e9-a220-371d51991646-2296/)
-  - [Material Design](https://material.io/design)
-- Aula - 06: Criando a tela criar tarefas.
-- Aula - 07: ViewBinding e DatePicker.
-  - [Documentação do View Binding](https://developer.android.com/topic/libraries/view-binding)
-  - [Artigo sobre View Binding](https://medium.com/androiddevelopers/use-view-binding-to-replace-findviewbyid-c83942471fc)
-- Aula - 08: Time Picker.
-  - Problema com o TimeZone [stackoverflow](https://stackoverflow.com/a/60979837)
-- Aula - 09: RecyclerView.
-  - Documentação do [RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview?hl=pt-br).
-- Aula - 10: Mostrando lista de tarefas.
-  - [Popup menu](https://material.io/components/menus#usage)
-- Aula - 11: Editando tarefas.
-- Aula - 12: Finalizando o app.
-   - [Empty States](https://material.io/design/communication/empty-states.html#content)
+- Instrutor: [Ezequiel Messore](https://www.linkedin.com/in/ezequielmessore)
+- Repositório original: [To-Do-List](https://github.com/EzequielMessore/To-Do-List)
+- Plataforma de Ensino: [Digital Innovation One](https://digitalinnovation.one/sign-up?ref=K5EF2VCVKA)
+- Módulo Criando um App de Lembretes e Tarefas com Kotlin - Dio Bootcamp Carrefour Dev Android
 
 
-## Desafios
-Tornar nosso aplicativo um aplicativo resiliente que não perca nossas tarefas salvas quando é encerrado,
-para isto podemos usar a estratégia de salvar nossos dados localmente.
-Podemos fazer isto de duas maneiras usar nossas
-[Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences?hl=pt-br) ou nosso
-[SQLite](https://developer.android.com/training/data-storage/sqlite)
+<hr>
 
-para utilizarmos esses conceitos de uma maneira facilitada devemos usar as seguintes bibliotecas:
+## Vídeo Explicativo
 
- - [Room](https://developer.android.com/training/data-storage/room):
- é um banco de dados que oferece uma camada de abstração sobre o SQLite, e nos ajuda a lidar melhor com a complexidade do mesmo.
+  [Youtube](https://youtu.be/BjmvLhxPmQQ)
 
- - [DataStore](https://developer.android.com/topic/libraries/architecture/datastore?hl=pt-br):
- é uma solução de armazenamento de dados que permite armazenar pares de chave-valor ou objetos tipados.
+
+<hr>
+
+##  Objetivo
+
+- Aplicação destinada à prática do módulo "Criando um App de Lembretes e Tarefas com Kotlin".
+- Criação de um App no estilo "To Do List" do zero em Kotlin.
+- Implementação de funcionalidades não tratadas no módulo.
+	- [ok] nova tarefa -> ao salvar uma tarefa sem descrição, exibir uma caixa de erro e não permitir salvar.
+	- [ok] editar tarefa -> exibir os elementos MaterialDatePicker e MaterialTimePicker com os valores já atribuídos na tarefa.
+	- [ok] editar tarefa -> ajuste no elemento MaterialDatePicker para não quebrar o layout em 2 linhas.
+	- [ok] editar tarefa -> exibir o texto do botão de ação para editar ou criar, dependendo da funcionalidade escolhida.
+	- [ok] editar tarefa -> após salvar, atualizar listagem com o conteúdo da tarefa modificado.
+	- [ok] editar tarefa -> adicionar evento no botão de voltar.
+	- [  ] persistência dos dados
+
+
+<hr>
+
+## Tecnologias Utilizadas
+
+- [Kotlin](https://kotlinlang.org/docs/getting-started.html)
+- [Android Studio](https://developer.android.com/studio/intro)
+- [Material Design](https://material.io/design)
+- [GitFlow](https://medium.com/trainingcenter/utilizando-o-fluxo-git-flow-e63d5e0d5e04)
+
+
+<hr>
+
+## Conteúdo apresentado
+
+- Etapa 1
+    - Configuração inicial do projeto
+- Etapa 2
+    - Um pouco do [Android Studio](https://developer.android.com/studio/intro)
+- Etapa 3
+    - Temas
+      - [Documentação dos temas](https://developer.android.com/guide/topics/ui/look-and-feel/themes?hl=pt-br)
+      - Link de referência do [stackoverflow](https://stackoverflow.com/questions/22192291/how-to-change-the-status-bar-color-in-android/24997241#24997241)
+      - Customização do Floating Action Button [stackoverflow](https://stackoverflow.com/questions/30969455/android-changing-floating-action-button-color/56158913#56158913)
+    - Começando por a mão na massa
+      - [Protótipo](https://xd.adobe.com/view/77c56d1f-232d-41e9-a220-371d51991646-2296/)
+      - [Material Design](https://material.io/design)
+    - Criando a tela criar tarefas
+    - ViewBinding e DatePicker
+      - [Documentação do View Binding](https://developer.android.com/topic/libraries/view-binding)
+      - [Artigo sobre View Binding](https://medium.com/androiddevelopers/use-view-binding-to-replace-findviewbyid-c83942471fc)
+    - Time Picker
+      - Problema com o TimeZone [stackoverflow](https://stackoverflow.com/a/60979837)
+    - RecyclerView
+      - Documentação do [RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview?hl=pt-br)
+    - Mostrando lista de tarefas
+      - [Material Popup menu](https://material.io/components/menus#usage)
+    - Editando tarefas
+    - Finalizando o app
+       - [Material Empty States](https://material.io/design/communication/empty-states.html#content)
+
+
+<hr>
+
+## Desafio proposto (TODO)
+
+Tornar nosso aplicativo um aplicativo resiliente que não perca nossas tarefas salvas quando é encerrado, para isto podemos usar a estratégia de salvar nossos dados localmente.
+Podemos fazer isto de duas maneiras usar nossas [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences?hl=pt-br) ou nosso [SQLite](https://developer.android.com/training/data-storage/sqlite) para utilizar esses conceitos de uma maneira facilitada devemos usar as seguintes bibliotecas:
+
+ - [Room](https://developer.android.com/training/data-storage/room): é um banco de dados que oferece uma camada de abstração sobre o SQLite, e nos ajuda a lidar melhor com a complexidade do mesmo.
+
+ - [DataStore](https://developer.android.com/topic/libraries/architecture/datastore?hl=pt-br): é uma solução de armazenamento de dados que permite armazenar pares de chave-valor ou objetos tipados.
+
+
+<hr>
+
+## Pesquisa complementar
+
+- [Date Pickers](https://material.io/components/date-pickers/android)
+- [Time Pickers](https://material.io/components/time-pickers)
+- [fix toolbar - action back ](https://stackoverflow.com/a/46629649)
+
+
+<hr>
+
+## Autor
+
+Bruno Gamba Rocha
+
+[Linkedin](https://www.linkedin.com/in/bruno-gamba-rocha/)
+
+[![GitHub followers](https://img.shields.io/github/followers/BrunoGambaRocha.svg?style=social&label=Follow)](https://github.com/BrunoGambaRocha?tab=followers)
+

@@ -18,6 +18,9 @@
 			</intent-filter>
 		</activity>
 
-		<activity android:name=".ui.SaveTaskActivity" />
+		<activity
+			android:name=".ui.SaveTaskActivity"
+			android:parentActivityName=".ui.MainActivity" />
+
 	</application>
 </manifest>
